@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import LoginButton from '../animatedButton/LoginButton';
 
@@ -7,17 +7,29 @@ function Login() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [status, setStatus] = useState(null);
+  const [stopanimation, setStopanimation] = useState(false);
+
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Stop the animation after 2 seconds
+    const timer = setTimeout(() => {
+      setStopanimation(true);
+    }, 2000);
+
+    // Clean up timer on component unmount
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     // Check credentials
-    if (userName === 'wakar' && password === 'Vibrall.12') {
+    if (userName === 'wakar' && password === '1234') {
       setStatus(true)
       setTimeout(() => {
         navigate('/home');
-    }, 4000);
+      }, 4000);
     } else {
       setStatus(false)
       setError('Invalid username or password');
@@ -25,8 +37,8 @@ function Login() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-200">
-      <div className="p-6 bg-white rounded shadow-md">
+    <div className={`flex items-center justify-center min-h-screen bg-gray-200 bg-login-background bg-cover bg-center ${!stopanimation ? "animate-bounce" : ""}`}>
+      <div className={`p-6 bg-white rounded shadow-md w-full max-w-md h-fit ${!stopanimation ? "animate-spin" : status===true ? "animate-bounce" : ""}`}>
         <h2 className="text-2xl font-bold mb-4">Login</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
@@ -57,7 +69,7 @@ function Login() {
             Login
           </button> */}
           <div className='flex w-full justify-center items-center'>
-            <LoginButton  onClick={handleSubmit} status={status}/>
+            <LoginButton onClick={handleSubmit} status={status} />
           </div>
         </form>
       </div>

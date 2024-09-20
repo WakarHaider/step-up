@@ -27,7 +27,7 @@ const LoginButton = ({ onClick, status }) => {
                 font-semibold rounded-lg overflow-hidden transition-all duration-100 w-full  
                 ${clicked ? 'animate-slide-out' : 'animate-slide-in'}`}
         >
-            <div className={`${animationComplete && status===true ? "animate-ping" : animationComplete && status===false ? "animate-spin" : " animate-bounce"}`}>
+            <div className={`${animationComplete && status===true ? "animate-ping" : animationComplete && status===false ? "animate-spin" : " animate-pulse"}`}>
                 {animationComplete ? (status ? 'Welcome' : 'Error') : 'Login'}
             </div>
         </button>

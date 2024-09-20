@@ -5,13 +5,15 @@ import './App.css';
 import Home from './components/Home';
 import About from './components/About';
 import Login from './components/onboarding/Login';
+import LandingPage from './components/landingPage/LandingPage';
 
 function App() {
   return (
     <Router>
       <div>
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/home" element={<Home />} />
           <Route path="/about" element={<About />} />
         </Routes>

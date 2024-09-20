@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import LoginButton from '../animatedButton/LoginButton';
+import LoginButton from '../../../components/animatedButton/LoginButton';
 
 function Login() {
   const [userName, setUserName] = useState('');

@@ -38,7 +38,7 @@ function Login() {
 
   return (
     <div className={`flex items-center justify-center min-h-screen bg-gray-200 bg-login-background bg-cover bg-center ${!stopanimation ? "animate-bounce" : ""}`}>
-      <div className={`p-6 bg-white rounded shadow-md w-full max-w-md h-fit ${!stopanimation ? "animate-spin" : status===true ? "animate-bounce" : ""}`}>
+      <div className={`p-6 bg-white rounded shadow-md w-full max-w-md h-fit ${!stopanimation ? "animate-spin" : status===true ? "animate-pulse" : ""}`}>
         <h2 className="text-2xl font-bold mb-4">Login</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
